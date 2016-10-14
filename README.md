@@ -61,3 +61,9 @@ It is the responsibility of the maintenance responsible to check *[daily]*:
     * login via SSH maintenance access (a node that does not reply on SSH should be treated as fully gray)
       * *systemctl restart marvind* - restarts the scheduling client 
       * *biteback -f* - system self-test should report 24/24 successful tests, or errors
+
+## Replacements
+
+Nodes and components that are not recovered by software and power cycling actions, need to be replaced.
+
+[TODO: sync text from deliverable]
