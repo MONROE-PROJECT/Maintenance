@@ -19,7 +19,7 @@ Each partner designates a maintenance responsible (role, not person) to perform 
 It is the responsibility of the maintenance responsible to check *[daily]*:
 
   * The status of the node in the monroe inventory 
-    * If the node is gray, action is required
+    * If the node is gray (>*[24h]* for mobile nodes), action is required 
     * If individual modems are gray, or red for more than *[24]* hours, action is required.
   * The status of the node in the scheduler dashboard (REST https://scheduler.monroe-system.eu/v1/backend/activity)
     * If the node is in the list "maintenance", action is required.
@@ -40,7 +40,7 @@ It is the responsibility of the maintenance responsible to check *[daily]*:
     * Exchange hardware. 
     
   * If individual modems are **fully gray or continuously red** in the inventory, the following actions may be taken, in addition to reporting the issue in a maintenance ticket:
-    * login via SSH maintenance access
+    * login via SSH maintenance access (a node that does not reply on SSH should be treated as fully gray)
     * report the output of the following commands, if suspicious
       * *biteback -f* - system self-test should report 24/24 successful tests, or errors
       * *lsusb* - should show three (two for Norway) ZTE devices
@@ -50,7 +50,7 @@ It is the responsibility of the maintenance responsible to check *[daily]*:
       * *tail -f /var/log/network-listener.log* - should not show any relevant [ERROR]s. 
 
   * If the node is in **maintenance mode** in the scheduler, the following should may be taken:
-    * login via SSH maintenance access 
+    * login via SSH maintenance access (a node that does not reply on SSH should be treated as fully gray)
     * investigate the output of the following commands:
       * *biteback -f* - system self-test should report 24/24 successful tests, or errors
       * *cat /tmp/maintenance.reasons* - shows the last reasons to go into maintenance mode. 
@@ -58,6 +58,6 @@ It is the responsibility of the maintenance responsible to check *[daily]*:
     * If a node is in maintenance mode for reasons not detectable by the self-test, please set write protection on the file *chattr +i /.maintenance*
     
   * If the node is a **dropout** in the scheduler, the following actions should be taken, in addition to reporting the issue in a maintenance ticket:
-    * login via SSH maintenance access 
+    * login via SSH maintenance access (a node that does not reply on SSH should be treated as fully gray)
       * *systemctl restart marvind* - restarts the scheduling client 
       * *biteback -f* - system self-test should report 24/24 successful tests, or errors
