@@ -16,11 +16,22 @@ Each partner designates a maintenance responsible (role, not person) to perform 
 
 ### Monitoring 
 
+We define the HW maintenance procedures when the node is not reachable differently for stationary and
+mobile nodes.
+Stationary Nodes: When a stationary node is NOT online for 24 hours:
+
+  * Power cycle the node by sending an SMS through the GSM socket
+  * If the node is still not online after 36 hours, manual intervention is required.
+
+Mobile Nodes: When a mobile node is NOT online for 3 days:
+
+  * Check if bus/train/truck is still operating
+  * If bus/train/truck is still operating, manual intervention is required.
+
 It is the responsibility of the maintenance responsible to check *[daily]*:
 
-  * The status of the node in the monroe inventory 
-    * If the node is gray (>*[24h]* for mobile nodes), action is required 
-    * If individual modems are gray, or red for more than *[24]* hours, action is required.
+  * The status of the node in the monroe inventory (see above)
+
   * The status of the node in the scheduler dashboard (REST https://scheduler.monroe-system.eu/v1/backend/activity)
     * If the node is in the list "maintenance", action is required.
     * If the node is in the list "dropouts 30d-1d", action is required.
@@ -66,4 +77,12 @@ It is the responsibility of the maintenance responsible to check *[daily]*:
 
 Nodes and components that are not recovered by software and power cycling actions, need to be replaced.
 
-[TODO: sync text from deliverable]
+If the node cannot be recovered for a certain period of time, manual intervention is
+required. Our approach to manual intervention is to replace the node (with the test nodes). To this end, the
+representative will contact the host to arrange the replacement of the node. Once the node is in the lab, the
+engineering team will perform the troubleshooting and identify the components that failed the most. We
+will then buy backup parts for these components.
+
+For the mobile nodes, since the installation requires more effort, before the replacement of the node, the
+engineer on the site will access to the node over the management eth cable and will try to see whether there
+is a SW issue that can be solved on site.
