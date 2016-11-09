@@ -64,9 +64,9 @@ It is the responsibility of the maintenance responsible to check *[daily]*:
     * login via SSH maintenance access (a node that does not reply on SSH should be treated as fully gray)
     * investigate the output of the following commands:
       * *cat /var/log/biteback.log* - system self-test should report 25/25 successful tests, or errors
-      * *cat /tmp/maintenance.reasons* - shows the last reasons to go into maintenance mode. 
-    * If the node does not show any errors in the self-test, the file /.maintenance may be removed, but the event should be reported in a maintenance ticket.
-    * If a node is in maintenance mode for reasons not detectable by the self-test, please set write protection on the file *chattr +i /.maintenance*
+      * *cat /monroe/maintenance/reasons* - shows the last reasons to go into maintenance mode. 
+    * If the node does not show any errors in the self-test, the file /monroe/maintenance/reasons may be removed, but the event should be reported in a maintenance ticket.
+    * If a node is in maintenance mode for reasons not detectable by the self-test, please set write protection on the file *chattr +i /monroe/maintenance/enabled
     
   * If the node is a **dropout** in the scheduler, the following actions should be taken, in addition to reporting the issue in a maintenance ticket:
     * login via SSH maintenance access (a node that does not reply on SSH should be treated as fully gray)
