@@ -49,13 +49,13 @@ Action is required for the following issues:
 
 ### Recovery
 
-  * If the node is **fully gray** in the inventory, the following actions should be taken:
+  * If the reported node issue is **last seen > ?h**, the following actions should be taken:
     * power cycle the node leaving it unpowered for 2-5 minutes, via cable or text message. (3 attempts)
     * physical analysis - is it powered? does it react on text messages by powering off?
     * BIOS check via serial cable (if possible) - report on the BIOS output after boot.
     * Exchange hardware.
 
-  * If individual modems are **fully gray or continuously red** in the inventory, the following actions may be taken, in addition to reporting the issue in a maintenance ticket:
+  * If the reported node issue is **Not all interfaces live**, the following actions may be taken, in addition to reporting the issue in a maintenance ticket:
     * login via SSH maintenance access (a node that does not reply on SSH should be treated as fully gray)
     * report the output of the following commands, if suspicious
       * *cat /var/log/biteback.log* - system self-test should report all successful tests, or errors
@@ -64,7 +64,7 @@ Action is required for the following issues:
       * *tail -f /var/log/network-listener.log* - should not show any relevant [ERROR]s.
     * If indicated, the SIM or hardware may need to be exchanged.
 
-  * If the node is in **maintenance mode** in the scheduler, the following should may be taken:
+  * If the reported node issue is **In maintenance**, the following should may be taken:
     * login via SSH maintenance access (a node that does not reply on SSH should be treated as fully gray)
     * investigate the output of the following commands:
       * *cat /var/log/biteback.log* - system self-test should report 25/25 successful tests, or errors
@@ -72,7 +72,7 @@ Action is required for the following issues:
     * If the node does not show any errors in the self-test, the file /monroe/maintenance/reasons may be removed, but the event should be reported in a maintenance ticket.
     * If a node is in maintenance mode for reasons not detectable by the self-test, please set write protection on the file *chattr +i /monroe/maintenance/enabled
 
-  * If the node is a **dropout** in the scheduler, the following actions should be taken, in addition to reporting the issue in a maintenance ticket:
+  * If the reported node issue is **Last heartbeat > 6h**, the following actions should be taken, in addition to reporting the issue in a maintenance ticket:
     * login via SSH maintenance access (a node that does not reply on SSH should be treated as fully gray)
       * *cat /var/log/biteback.log* - system self-test should report 25/25 successful tests, or errors
 
