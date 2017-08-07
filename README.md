@@ -65,7 +65,10 @@ Action is required for the following issues:
       * *lsusb* - should show all installed modems.
       * *modems* - will indicate which modems are not working and why.
       * *tail -f /var/log/network-listener.log* - should not show any relevant [ERROR]s.
-    * If indicated, the SIM or hardware may need to be exchanged, or the node power cycled (e.g. Sierra Wireless in mode 9071 in lsusb).
+    * The following issues currently require a power cycle:
+      * Sierra Wireless in mode 9071 in lsusb.
+      * ICE hardware in mode 9061 in lsusb.
+    * If indicated, the SIM or hardware may need to be exchanged.
 
   * If the reported node issue is **In maintenance**, the following should may be taken:
     * login via SSH maintenance access (a node that does not reply on SSH should be treated as fully gray)
