@@ -51,6 +51,9 @@ Action is required for the following issues:
 
   * If the reported node issue is **last seen > ?h**, the following actions should be taken:
     * power cycle the node leaving it unpowered for 2-5 minutes, via cable or text message. (3 attempts)
+    * if a power cycle is not possible, but the nodes head/tail counterpart is online, log in via ssh to 
+      * into head node: 172.16.253.1 or 172.16.254.1
+      * into tail node: 172.16.253.2 or 172.16.254.2
     * physical analysis - is it powered? does it react on text messages by powering off?
     * BIOS check via serial cable (if possible) - report on the BIOS output after boot.
     * Exchange hardware.
@@ -62,7 +65,7 @@ Action is required for the following issues:
       * *lsusb* - should show all installed modems.
       * *modems* - will indicate which modems are not working and why.
       * *tail -f /var/log/network-listener.log* - should not show any relevant [ERROR]s.
-    * If indicated, the SIM or hardware may need to be exchanged.
+    * If indicated, the SIM or hardware may need to be exchanged, or the node power cycled (e.g. Sierra Wireless in mode 9071 in lsusb).
 
   * If the reported node issue is **In maintenance**, the following should may be taken:
     * login via SSH maintenance access (a node that does not reply on SSH should be treated as fully gray)
